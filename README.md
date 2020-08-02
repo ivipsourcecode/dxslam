@@ -11,6 +11,8 @@ We have tested the library in **Ubuntu 16.04**and **18.04**, but it should be ea
 * tensorflow(1.12)
 # 2. Building DXSLAM library and examples
 
+Download the [vocabulary file](https://github.com/ivipsourcecode/DX-SLAM/releases/download/1.0.0/DXSLAM.tar.xz) and put it into the ./Vocabulary directory
+Download the [hf-net mode file](https://github.com/ivipsourcecode/DX-SLAM/releases/download/1.0.0/model.tar.xz) and put it into the ./hf-net directory
 Clone the repository:
 ```
 git clone https://github.com/raulmur/DXSLAM.git DXSLAM
