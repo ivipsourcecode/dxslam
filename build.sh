@@ -43,6 +43,11 @@ cd Vocabulary
 tar -xf *.tar.xz
 cd ..
 
+cd hf-net
+tar -xf *.tar.xz
+cd ..
+
+
 echo "Configuring and building DXSLAM ..."
 
 mkdir -p build
