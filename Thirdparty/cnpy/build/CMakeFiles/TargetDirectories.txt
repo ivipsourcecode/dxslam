@@ -1,0 +1,9 @@
+/home/gasper/longqiwei/dxslam/ivip/dxslam/Thirdparty/cnpy/build/CMakeFiles/install/strip.dir
+/home/gasper/longqiwei/dxslam/ivip/dxslam/Thirdparty/cnpy/build/CMakeFiles/install/local.dir
+/home/gasper/longqiwei/dxslam/ivip/dxslam/Thirdparty/cnpy/build/CMakeFiles/install.dir
+/home/gasper/longqiwei/dxslam/ivip/dxslam/Thirdparty/cnpy/build/CMakeFiles/cnpy-static.dir
+/home/gasper/longqiwei/dxslam/ivip/dxslam/Thirdparty/cnpy/build/CMakeFiles/cnpy.dir
+/home/gasper/longqiwei/dxslam/ivip/dxslam/Thirdparty/cnpy/build/CMakeFiles/list_install_components.dir
+/home/gasper/longqiwei/dxslam/ivip/dxslam/Thirdparty/cnpy/build/CMakeFiles/example1.dir
+/home/gasper/longqiwei/dxslam/ivip/dxslam/Thirdparty/cnpy/build/CMakeFiles/edit_cache.dir
+/home/gasper/longqiwei/dxslam/ivip/dxslam/Thirdparty/cnpy/build/CMakeFiles/rebuild_cache.dir

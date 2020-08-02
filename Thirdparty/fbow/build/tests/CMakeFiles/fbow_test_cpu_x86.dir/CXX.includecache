@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../src/cpu.h
+cstdint
+-
+cstring
+-
+string
+-
+Windows.h
+-
+intrin.h
+-
+cpuid.h
+-
+
+/home/gasper/longqiwei/dxslam/ivip/dxslam/Thirdparty/fbow/tests/test_cpu_x86.cpp
+iostream
+-
+cpu.h
+/home/gasper/longqiwei/dxslam/ivip/dxslam/Thirdparty/fbow/tests/cpu.h
+
