@@ -1,1 +1,0 @@
-/usr/bin/c++   -std=c++11 -O3 -DNDEBUG  -rdynamic CMakeFiles/example1.dir/example1.cpp.o  -o example1 -Wl,-rpath,/home/gasper/longqiwei/dxslam/ivip/dxslam/Thirdparty/cnpy/build libcnpy.so -lz 

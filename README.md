@@ -1,5 +1,5 @@
 # DXSLAM
-This is the offline version of dxslam,online version is here!We developer this program base on [ORB-SLAM2](https://github.com/raulmur/ORB_SLAM2)
+This is the offline version of dxslam,online version is here!We develop this program base on [ORB-SLAM2](https://github.com/raulmur/ORB_SLAM2)
 
 # 1. Prerequisites
 We have tested the library in **Ubuntu 16.04**and **18.04**, but it should be easy to compile in other platforms.
@@ -39,7 +39,7 @@ This will create **libDXSLAM.so**  at *lib* folder and the executables **rgbd_tu
 3. Get HF-net output
   ```
   cd hf-net
-  python3 getFeature.py image/path/to/rgb output/featuer/path
+  python3 getFeature.py image/path/to/rgb output/feature/path
   ```
     
 4. Execute the following command. Change `IVIP.yaml` to TUM1.yaml,TUM2.yaml or TUM3.yaml for freiburg1, freiburg2 and freiburg3 sequences respectively. Change `PATH_TO_SEQUENCE_FOLDER`to the uncompressed sequence folder. Change `ASSOCIATIONS_FILE` to the path to the corresponding associations file.
