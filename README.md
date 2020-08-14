@@ -50,7 +50,7 @@ This will create **libDXSLAM.so**  at *lib* folder and the executables **rgbd_tu
 
 1. Download a sequence from http://vision.in.tum.de/data/datasets/rgbd-dataset/download and uncompress it.
 
-2. Associate RGB images and depth images using the python script [associate.py]
+2. Associate RGB images and depth images using the python script [associate.py](https://vision.in.tum.de/lib/exe/fetch.php?tok=5ec47e&media=https%3A%2F%2Fsvncvpr.in.tum.de%2Fcvpr-ros-pkg%2Ftrunk%2Frgbd_benchmark%2Frgbd_benchmark_tools%2Fsrc%2Frgbd_benchmark_tools%2Fassociate.py)
 
   ```
   python associate.py PATH_TO_SEQUENCE/rgb.txt PATH_TO_SEQUENCE/depth.txt > associations.txt
