@@ -34,9 +34,7 @@ We have tested the library in **Ubuntu 16.04** and **18.04**, but it should be e
 Clone the repository:
 ```
 git clone https://github.com/raulmur/DXSLAM.git DXSLAM
-```
-Download the [vocabulary file](https://github.com/ivipsourcecode/DX-SLAM/releases/download/1.0.0/DXSLAM.tar.xz) and put it into the ./Vocabulary directory  
-Download the [hf-net mode file](https://github.com/ivipsourcecode/DX-SLAM/releases/download/1.0.0/model.tar.xz) and put it into the ./hf-net directory  
+``` 
 We provide a script `build.sh` to build the *Thirdparty* libraries and *DXSLAM*. Please make sure you have installed all required dependencies (see section 1). Execute:
 ```
 cd dxslam
@@ -62,12 +60,12 @@ This will create **libDXSLAM.so**  at *lib* folder and the executables **rgbd_tu
   cd hf-net
   python3 getFeature.py image/path/to/rgb output/feature/path
   ```
-    
+
 4. Execute the following command. Change `IVIP.yaml` to TUM1.yaml,TUM2.yaml or TUM3.yaml for freiburg1, freiburg2 and freiburg3 sequences respectively. Change `PATH_TO_SEQUENCE_FOLDER`to the uncompressed sequence folder. Change `ASSOCIATIONS_FILE` to the path to the corresponding associations file.
   ```
   ./Examples/RGB-D/rgbd_tum Vocabulary/ORBvoc.txt Examples/RGB-D/TUMX.yaml PATH_TO_SEQUENCE_FOLDER ASSOCIATIONS_FILE OUTPUT/FEATURE/PATH
   ```
-  
+
 # 4. Processing your own sequences
 You will need to create a settings file with the calibration of your camera. See the settings file provided for the TUM  RGB-D cameras. We use the calibration model of OpenCV. RGB-D input must be synchronized and depth registered.
 

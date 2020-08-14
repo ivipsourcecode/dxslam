@@ -37,16 +37,18 @@ make -j
 
 cd ../../../
 
-echo "Uncompress vocabulary ..."
+echo "Download and Uncompress vocabulary ..."
 
+mkdir Vocabulary
 cd Vocabulary
+wget https://github.com/ivipsourcecode/dxslam/releases/download/1.0.0/DXSLAM.tar.xz
 tar -xf *.tar.xz
 cd ..
 
 cd hf-net
+wget https://github.com/ivipsourcecode/dxslam/releases/download/1.0.0/model.tar.xz
 tar -xf *.tar.xz
 cd ..
-
 
 echo "Configuring and building DXSLAM ..."
 
