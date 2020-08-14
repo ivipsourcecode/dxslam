@@ -1,14 +1,35 @@
 # DXSLAM
-This is the offline version of dxslam,online version is here!We develop this program base on [ORB-SLAM2](https://github.com/raulmur/ORB_SLAM2)
+
+DXSLAM is a visual SLAM system based on deep CNN feature extraction. Please
+
+* clone this repo if you want to run an offline evaluation with e.g. the TUM dataset, or
+* clone [dxslam_ros](https://github.com/cedrusx/dxslam_ros) and [deep_features](https://github.com/cedrusx/deep_features) if you want a ROS version to work with a live camera or ROS bags e.g. from the OpenLORIS-Scene datasets, or
+* clone [deep_features](https://github.com/cedrusx/deep_features) if you are interested in deep feature extraction only.
+
+Technical details are described in [this paper](https://arxiv.org/pdf/2008.05416) (to be published in IROS 2020):
+
+> Dongjiang Li, Xuesong Shi, Qiwei Long, Shenghui Liu, Wei Yang, Fangshi Wang, Qi Wei, Fei Qiao, "DXSLAM: A Robust and Efficient Visual SLAM System with Deep Features," arXiv preprint arXiv:2008.05416, 2020.
+
+```
+@article{li2020dxslam,
+  title={{DXSLAM}: A Robust and Efficient Visual {SLAM} System with Deep Features},
+  author={Dongjiang Li and Xuesong Shi and Qiwei Long and Shenghui Liu and Wei Yang and Fangshi Wang and Qi Wei and Fei Qiao},
+  journal={arXiv preprint arXiv:2008.05416},
+  year={2020}
+}
+```
+
+The SLAM pipeline in this repo is customized from [ORB-SLAM2](https://github.com/raulmur/ORB_SLAM2).
 
 # 1. Prerequisites
-We have tested the library in **Ubuntu 16.04**and **18.04**, but it should be easy to compile in other platforms.
+We have tested the library in **Ubuntu 16.04** and **18.04**, but it should be easy to compile in other platforms.
 * C++11 or C++0x Compiler
 * Pangolin
 * OpenCV
 * Eigen3
 * Dbow、Fbow and g2o (Included in Thirdparty folder)
 * tensorflow(1.12)
+
 # 2. Building DXSLAM library and examples
 Clone the repository:
 ```
