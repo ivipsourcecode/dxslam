@@ -14,8 +14,8 @@ using namespace std;
 namespace DXSLAM
 {
 
-const int Matcher::TH_HIGH = 100;
-const int Matcher::TH_LOW = 100;
+const float Matcher::TH_HIGH = 100;
+const float Matcher::TH_LOW = 100;
 const int Matcher::HISTO_LENGTH = 30;
 
 Matcher::Matcher(float nnratio, bool checkOri): mfNNratio(nnratio), mbCheckOrientation(checkOri)
@@ -53,9 +53,9 @@ int Matcher::SearchByProjection(Frame &F, const std::vector<MapPoint*> &vpMapPoi
 
         const cv::Mat MPdescriptor = pMP->GetDescriptor();
 
-        int bestDist=256;
+        float bestDist = std::numeric_limits<float>::max();
         int bestLevel= -1;
-        int bestDist2=256;
+        float bestDist2=bestDist;
         int bestLevel2 = -1;
         int bestIdx =-1 ;
 
@@ -77,7 +77,7 @@ int Matcher::SearchByProjection(Frame &F, const std::vector<MapPoint*> &vpMapPoi
 
             const cv::Mat &d = F.mDescriptors.row(idx);
 
-            const int dist = DescriptorDistance(MPdescriptor,d);
+            const float dist = DescriptorDistance(MPdescriptor,d);
 
             if(dist<bestDist)
             {
@@ -132,9 +132,9 @@ int Matcher::SearchByBoW(KeyFrame* pKF, Frame &F, std::vector<MapPoint*> &vpMapP
         const cv::Mat &dKF= pKF->mDescriptors.row(iKF);
         MapPoint* pMP = vpMapPointsKF[iKF];
 
-        int bestDist1=256;
+        float bestDist1 = std::numeric_limits<float>::max();
         int bestIdxF =-1 ;
-        int bestDist2=256;
+        float bestDist2 = std::numeric_limits<float>::max();
 
         for(int iF=0; iF<descriptor1.rows; iF++)
         {
@@ -142,7 +142,7 @@ int Matcher::SearchByBoW(KeyFrame* pKF, Frame &F, std::vector<MapPoint*> &vpMapP
                 continue;
 
             const cv::Mat &dF = F.mDescriptors.row(iF);
-            const int dist =  DescriptorDistance(dKF,dF);
+            const float dist =  DescriptorDistance(dKF,dF);
 
             if(dist<bestDist1)
             {
@@ -252,7 +252,7 @@ int Matcher::SearchByProjection(KeyFrame* pKF, cv::Mat Scw, const std::vector<Ma
         // Match to the most similar keypoint in the radius
         const cv::Mat dMP = pMP->GetDescriptor();
 
-        int bestDist = 256;
+        float bestDist = std::numeric_limits<float>::max();
         int bestIdx = -1;
         for(std::vector<size_t>::const_iterator vit=vIndices.begin(), vend=vIndices.end(); vit!=vend; vit++)
         {
@@ -267,7 +267,7 @@ int Matcher::SearchByProjection(KeyFrame* pKF, cv::Mat Scw, const std::vector<Ma
 
             const cv::Mat &dKF = pKF->mDescriptors.row(idx);
 
-            const int dist = DescriptorDistance(dMP,dKF);
+            const float dist = DescriptorDistance(dMP,dKF);
 
             if(dist<bestDist)
             {
@@ -327,9 +327,9 @@ int Matcher::SearchByBoW(KeyFrame *pKF1, KeyFrame *pKF2, std::vector<MapPoint *>
 
                 const cv::Mat &d1 = Descriptors1.row(idx1);
 
-                int bestDist1=256;
+                float bestDist1 = std::numeric_limits<float>::max();
                 int bestIdx2 =-1 ;
-                int bestDist2=256;
+                float bestDist2 = std::numeric_limits<float>::max();
 
                 for(size_t i2=0, iend2=f2it->second.size(); i2<iend2; i2++)
                 {
@@ -345,7 +345,7 @@ int Matcher::SearchByBoW(KeyFrame *pKF1, KeyFrame *pKF2, std::vector<MapPoint *>
 
                     const cv::Mat &d2 = Descriptors2.row(idx2);
 
-                    int dist = DescriptorDistance(d1,d2);
+                    float dist = DescriptorDistance(d1,d2);
 
                     if(dist<bestDist1)
                     {
@@ -445,7 +445,7 @@ int Matcher::SearchForTriangulation(KeyFrame *pKF1, KeyFrame *pKF2, cv::Mat F12,
 
                 const cv::Mat &d1 = pKF1->mDescriptors.row(idx1);
 
-                int bestDist = TH_LOW;
+                float bestDist = TH_LOW;
                 int bestIdx2 = -1;
 
                 for(size_t i2=0, iend2=f2it->second.size(); i2<iend2; i2++)
@@ -466,7 +466,7 @@ int Matcher::SearchForTriangulation(KeyFrame *pKF1, KeyFrame *pKF2, cv::Mat F12,
 
                     const cv::Mat &d2 = pKF2->mDescriptors.row(idx2);
 
-                    const int dist = DescriptorDistance(d1,d2);
+                    const float dist = DescriptorDistance(d1,d2);
 
                     if(dist>TH_LOW || dist>bestDist)
                         continue;
@@ -626,7 +626,7 @@ int Matcher::Fuse(KeyFrame *pKF, const std::vector<MapPoint *> &vpMapPoints, con
 
         const cv::Mat dMP = pMP->GetDescriptor();
 
-        int bestDist = 256;
+        float bestDist = std::numeric_limits<float>::max();
         int bestIdx = -1;
         for(std::vector<size_t>::const_iterator vit=vIndices.begin(), vend=vIndices.end(); vit!=vend; vit++)
         {
@@ -668,7 +668,7 @@ int Matcher::Fuse(KeyFrame *pKF, const std::vector<MapPoint *> &vpMapPoints, con
 
             const cv::Mat &dKF = pKF->mDescriptors.row(idx);
 
-            const int dist = DescriptorDistance(dMP,dKF);
+            const float dist = DescriptorDistance(dMP,dKF);
 
             if(dist<bestDist)
             {
@@ -785,7 +785,7 @@ int Matcher::Fuse(KeyFrame *pKF, cv::Mat Scw, const std::vector<MapPoint *> &vpP
 
         const cv::Mat dMP = pMP->GetDescriptor();
 
-        int bestDist = INT_MAX;
+        float bestDist = std::numeric_limits<float>::max();
         int bestIdx = -1;
         for(std::vector<size_t>::const_iterator vit=vIndices.begin(); vit!=vIndices.end(); vit++)
         {
@@ -797,7 +797,7 @@ int Matcher::Fuse(KeyFrame *pKF, cv::Mat Scw, const std::vector<MapPoint *> &vpP
 
             const cv::Mat &dKF = pKF->mDescriptors.row(idx);
 
-            int dist = DescriptorDistance(dMP,dKF);
+            float dist = DescriptorDistance(dMP,dKF);
 
             if(dist<bestDist)
             {
@@ -923,7 +923,7 @@ int Matcher::SearchBySim3(KeyFrame *pKF1, KeyFrame *pKF2, std::vector<MapPoint*>
         // Match to the most similar keypoint in the radius
         const cv::Mat dMP = pMP->GetDescriptor();
 
-        int bestDist = INT_MAX;
+        float bestDist = std::numeric_limits<float>::max();
         int bestIdx = -1;
         for(std::vector<size_t>::const_iterator vit=vIndices.begin(), vend=vIndices.end(); vit!=vend; vit++)
         {
@@ -936,7 +936,7 @@ int Matcher::SearchBySim3(KeyFrame *pKF1, KeyFrame *pKF2, std::vector<MapPoint*>
 
             const cv::Mat &dKF = pKF2->mDescriptors.row(idx);
 
-            const int dist = DescriptorDistance(dMP,dKF);
+            const float dist = DescriptorDistance(dMP,dKF);
 
             if(dist<bestDist)
             {
@@ -1001,7 +1001,7 @@ int Matcher::SearchBySim3(KeyFrame *pKF1, KeyFrame *pKF2, std::vector<MapPoint*>
         // Match to the most similar keypoint in the radius
         const cv::Mat dMP = pMP->GetDescriptor();
 
-        int bestDist = INT_MAX;
+        float bestDist = std::numeric_limits<float>::max();
         int bestIdx = -1;
         for(std::vector<size_t>::const_iterator vit=vIndices.begin(), vend=vIndices.end(); vit!=vend; vit++)
         {
@@ -1014,7 +1014,7 @@ int Matcher::SearchBySim3(KeyFrame *pKF1, KeyFrame *pKF2, std::vector<MapPoint*>
 
             const cv::Mat &dKF = pKF1->mDescriptors.row(idx);
 
-            const int dist = DescriptorDistance(dMP,dKF);
+            const float dist = DescriptorDistance(dMP,dKF);
 
             if(dist<bestDist)
             {
@@ -1118,7 +1118,7 @@ int Matcher::SearchByProjection(Frame &CurrentFrame, const Frame &LastFrame, con
 
                 const cv::Mat dMP = pMP->GetDescriptor();
 
-                int bestDist = 256;
+                float bestDist = std::numeric_limits<float>::max();
                 int bestIdx2 = -1;
 
                 for(std::vector<size_t>::const_iterator vit=vIndices2.begin(), vend=vIndices2.end(); vit!=vend; vit++)
@@ -1138,7 +1138,7 @@ int Matcher::SearchByProjection(Frame &CurrentFrame, const Frame &LastFrame, con
 
                     const cv::Mat &d = CurrentFrame.mDescriptors.row(i2);
 
-                    const int dist = DescriptorDistance(dMP,d);
+                    const float dist = DescriptorDistance(dMP,d);
 
                     if(dist<bestDist)
                     {
@@ -1147,7 +1147,7 @@ int Matcher::SearchByProjection(Frame &CurrentFrame, const Frame &LastFrame, con
                     }
                 }
 
-                if(bestDist<=INT_MAX)
+                if(bestDist<=TH_HIGH)
                 {
                     CurrentFrame.mvpMapPoints[bestIdx2]=pMP;
                     nmatches++;
@@ -1256,7 +1256,7 @@ int Matcher::SearchByProjection(Frame &CurrentFrame, KeyFrame *pKF, const std::s
 
                 const cv::Mat dMP = pMP->GetDescriptor();
 
-                int bestDist = 256;
+                float bestDist = std::numeric_limits<float>::max();
                 int bestIdx2 = -1;
 
                 for(std::vector<size_t>::const_iterator vit=vIndices2.begin(); vit!=vIndices2.end(); vit++)
@@ -1267,7 +1267,7 @@ int Matcher::SearchByProjection(Frame &CurrentFrame, KeyFrame *pKF, const std::s
 
                     const cv::Mat &d = CurrentFrame.mDescriptors.row(i2);
 
-                    const int dist = DescriptorDistance(dMP,d);
+                    const float dist = DescriptorDistance(dMP,d);
 
                     if(dist<bestDist)
                     {
@@ -1365,18 +1365,18 @@ void Matcher::ComputeThreeMaxima(std::vector<int>* histo, const int L, int &ind1
     }
 }
 
-int Matcher::DescriptorDistance(const cv::Mat &a, const cv::Mat &b)
+float Matcher::DescriptorDistance(const cv::Mat &a, const cv::Mat &b)
 {
     const float *pa = a.ptr<float>();
     const float *pb = b.ptr<float>();
 
-    double  dist=0;
+    float  dist=0;
 
     for (int i = 0 ; i < 256  ; i++){
         dist += fabs(pa[i] - pb[i]);
     }
 
-    return int(dist);
+    return dist;
 }
 
 } //namespace ORB_SLAM
