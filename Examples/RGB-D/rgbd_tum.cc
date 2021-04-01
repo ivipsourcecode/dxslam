@@ -11,6 +11,10 @@
 #include "cnpy.h"
 #include<System.h>
 
+#ifndef CV_LOAD_IMAGE_UNCHANGED
+#define CV_LOAD_IMAGE_UNCHANGED -1
+#endif
+
 using namespace std;
 
 void LoadImages(const string &strAssociationFilename, vector<string> &vstrImageFilenamesRGB,
@@ -126,7 +130,7 @@ int main(int argc, char **argv)
 
     // Save camera trajectory
     SLAM.SaveTrajectoryTUM("CameraTrajectory.txt");
-    SLAM.SaveKeyFrameTrajectoryTUM("KeyFrameTrajectory.txt");   
+    SLAM.SaveKeyFrameTrajectoryTUM("KeyFrameTrajectory.txt");
 
     return 0;
 }
