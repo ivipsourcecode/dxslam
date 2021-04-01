@@ -75,7 +75,7 @@ public:
     int mSensor;
 
     // Current Frame
-    Frame mCurrentFrame;
+    std::shared_ptr<Frame> mCurrentFrame;
     cv::Mat mImGray;
 
     // Initialization Variables (Monocular)
@@ -178,7 +178,7 @@ protected:
 
     //Last Frame, KeyFrame and Relocalisation Info
     KeyFrame* mpLastKeyFrame;
-    Frame mLastFrame;
+    std::shared_ptr<Frame> mLastFrame;
     unsigned int mnLastKeyFrameId;
     unsigned int mnLastRelocFrameId;
 

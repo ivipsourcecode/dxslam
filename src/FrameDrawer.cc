@@ -63,7 +63,7 @@ cv::Mat FrameDrawer::DrawFrame()
                 cv::line(im,vIniKeys[i].pt,vCurrentKeys[vMatches[i]].pt,
                         cv::Scalar(0,255,0));
             }
-        }        
+        }
     }
     else if(state==Tracking::OK) //TRACKING
     {
@@ -147,7 +147,7 @@ void FrameDrawer::Update(Tracking *pTracker)
 {
     std::unique_lock<std::mutex> lock(mMutex);
     pTracker->mImGray.copyTo(mIm);
-    mvCurrentKeys=pTracker->mCurrentFrame.mvKeys;
+    mvCurrentKeys=pTracker->mCurrentFrame->mvKeys;
     N = mvCurrentKeys.size();
     mvbVO = std::vector<bool>(N,false);
     mvbMap = std::vector<bool>(N,false);
@@ -163,10 +163,10 @@ void FrameDrawer::Update(Tracking *pTracker)
     {
         for(int i=0;i<N;i++)
         {
-            MapPoint* pMP = pTracker->mCurrentFrame.mvpMapPoints[i];
+            MapPoint* pMP = pTracker->mCurrentFrame->mvpMapPoints[i];
             if(pMP)
             {
-                if(!pTracker->mCurrentFrame.mvbOutlier[i])
+                if(!pTracker->mCurrentFrame->mvbOutlier[i])
                 {
                     if(pMP->Observations()>0)
                         mvbMap[i]=true;

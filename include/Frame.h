@@ -27,23 +27,25 @@ public:
 
     // Constructor for RGB-D cameras.
     Frame(const cv::Mat &imGray,
-    const cv::Mat &imDepth,
-    const double &timeStamp,
-    Vocabulary* voc,
-    cv::Mat &K,
-    cv::Mat &distCoef,
-    const float &bf,
-    const float &thDepth,
-    const std::vector<cv::KeyPoint> &keypoints,
-    const cv::Mat &local_desc,
-    const cv::Mat &global_desc);
+          const cv::Mat &imDepth,
+          const double &timeStamp,
+          Vocabulary *voc,
+          cv::Mat &K,
+          cv::Mat &distCoef,
+          const float &bf,
+          const float &thDepth,
+          const std::vector<cv::KeyPoint> &keypoints,
+          const cv::Mat &local_desc,
+          const cv::Mat &global_desc);
 
+    // Disable compiler-generated assignment operator because it could cause crashes
+    Frame &operator=(const Frame &frame) = delete;
 
     // Compute Bag of Words representation.
     void ComputeBoW();
 
     // Set the camera pose.
-    void SetPose(cv::Mat Tcw);
+    void SetPose(const cv::Mat &Tcw);
 
     // Computes rotation, translation and camera center matrices from the camera pose.
     void UpdatePoseMatrices();
