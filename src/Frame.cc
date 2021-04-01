@@ -103,7 +103,7 @@ void Frame::AssignFeaturesToGrid()
     }
 }
 
-void Frame::SetPose(cv::Mat Tcw)
+void Frame::SetPose(const cv::Mat &Tcw)
 {
     mTcw = Tcw.clone();
     UpdatePoseMatrices();
