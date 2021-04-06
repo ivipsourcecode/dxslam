@@ -414,7 +414,7 @@ int Matcher::SearchForTriangulation(KeyFrame *pKF1, KeyFrame *pKF2, cv::Mat F12,
     for(int i=0;i<HISTO_LENGTH;i++)
         rotHist[i].reserve(500);
 
-    const float factor = 1.0f/HISTO_LENGTH;
+    const float factor = HISTO_LENGTH/360.f;
 
     auto f1it = vFeatVec1.begin();
     auto f2it = vFeatVec2.begin();
@@ -487,6 +487,7 @@ int Matcher::SearchForTriangulation(KeyFrame *pKF1, KeyFrame *pKF2, cv::Mat F12,
                 {
                     const cv::KeyPoint &kp2 = pKF2->mvKeysUn[bestIdx2];
                     vMatches12[idx1]=bestIdx2;
+                    vbMatched2[bestIdx2]=true;
                     nmatches++;
 
                     if(mbCheckOrientation)
