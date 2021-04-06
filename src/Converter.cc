@@ -1,3 +1,34 @@
+/*
+ *--------------------------------------------------------------------------------------------------
+ * DXSLAM: A Robust and Efficient Visual SLAM System with Deep Features
+　*　Author(s):
+ * Dongjiang Li, Xuesong Shi, Qiwei Long, Shenghui Liu, Wei Yang, Fangshi Wang, Qi Wei, Fei Qiao qiaofei@mail.tsinghua.edu.cn
+ * --------------------------------------------------------------------------------------------------
+ * DXSLAM is a optimized SLAM system based on the famous ORB-SLAM2. If you haven't learn ORB_SLAM2 code, 
+ * you'd better to be familiar with ORB_SLAM2 project first. Compared to ORB_SLAM2, 
+ * we add anther two threads including semantic segmentation thread and densemap creation thread. 
+ * You should pay attention to Frame.cc, ORBmatcher.cc, Pointcloudmapping.cc and Segment.cc.
+ * 
+ *　@article{murORB2,
+ *　title={{ORB-SLAM2}: an Open-Source {SLAM} System for Monocular, Stereo and {RGB-D} Cameras},
+　*　author={Mur-Artal, Ra\'ul and Tard\'os, Juan D.},
+　* journal={IEEE Transactions on Robotics},
+　*　volume={33},
+　* number={5},
+　* pages={1255--1262},
+　* doi = {10.1109/TRO.2017.2705103},
+　* year={2017}
+ *　}
+ * --------------------------------------------------------------------------------------------------
+ * Copyright (C) 2018, iVip Lab @ EE, THU (https://ivip-tsinghua.github.io/iViP-Homepage/) and 
+ * Advanced Mechanism and Roboticized Equipment Lab. All rights reserved.
+ *
+ * Licensed under the GPLv3 License;
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * https://github.com/ivipsourcecode/DS-SLAM/blob/master/LICENSE
+ *--------------------------------------------------------------------------------------------------
+ */
 #include "Converter.h"
 
 namespace DXSLAM
